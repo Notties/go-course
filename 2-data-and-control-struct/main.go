@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"go-mod/methods"
+)
 
 func variable() {
 	var name string = "Knot"
@@ -91,8 +94,100 @@ func controlStructure() {
 	default:
 		fmt.Println("Invalid Day")
 	}
+
+	// pre-define if
+	if num := 9; num < 0 {
+		fmt.Println("Negative")
+	} else if num < 10 {
+		fmt.Println("Single digit")
+	} else {
+		fmt.Println("Multiple digits")
+	}
+
+	// iteration (Loop)
+	// for loop
+	for i := 0; i < 5; i++ {
+		fmt.Println(i)
+	}
+
+	// while loop
+	i := 0
+	for i < 5 {
+		fmt.Println(i)
+		i++
+	}
+
+	// do while loop
+	i = 0
+	for {
+		fmt.Println(i)
+		i++
+		if i >= 5 {
+			break
+		}
+	}
+}
+
+func dataStructure() {
+	// array
+	var arr [5]int
+	arr[0] = 1
+	arr[1] = 2
+	arr[2] = 3
+	arr[3] = 4
+	arr[4] = 5
+	fmt.Println(arr)
+
+	// slice (dynamic sequence)
+	slice := []int{1, 2, 3, 4, 5}
+	fmt.Println(slice)
+
+	slice = append(slice, 6)
+	fmt.Println(slice)
+
+	newSlice := arr[:]
+	fmt.Println(newSlice)
+
+	// map
+	myMap := make(map[string]int)
+	myMap["one"] = 1
+	myMap["two"] = 2
+	myMap["three"] = 3
+	fmt.Println(myMap)
+
+	m := map[string]int{
+		"one":   1,
+		"two":   2,
+		"three": 3,
+	}
+	for key, value := range m {
+		fmt.Println(key, value)
+	}
+	// Check if key exist
+	value, ok := m["one"]
+	if ok {
+		fmt.Println(value)
+	} else {
+		fmt.Println("Key not found")
+	}
+
+	// struct
+	type Student struct {
+		Name  string
+		Age   int
+		Grade string
+	}
+	var student Student
+	student.Name = "John"
+	student.Age = 20
+	student.Grade = "A"
+	fmt.Println(student)
+
+	mapStudent := make(map[string]Student)
+	mapStudent["st01"] = Student{Name: "Knot", Age: 20, Grade: "A"}
+	fmt.Println(mapStudent)
 }
 
 func main() {
-	variable()
+	methods.Receiver()
 }
